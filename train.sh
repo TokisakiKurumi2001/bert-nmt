@@ -4,11 +4,11 @@ nvidia-smi
 
 python3 -c "import torch; print(torch.__version__)"
 
-src=de
-tgt=en
+src=en
+tgt=vi
 bedropout=0.5
-ARCH=transformer_s2_iwslt_de_en
-DATAPATH=iwslt_de_en
+ARCH=transformer_wmt_en_de
+DATAPATH=iwslt_en_vi
 SAVEDIR=checkpoints/iwed_${src}_${tgt}_${bedropout}
 mkdir -p $SAVEDIR
 if [ ! -f "$SAVEDIR/checkpoint_last.pt" ]
@@ -25,4 +25,4 @@ python train.py $DATAPATH \
 --criterion label_smoothed_cross_entropy --max-update 150000 --warmup-updates 4000 --warmup-init-lr '1e-07' \
 --adam-betas '(0.9,0.98)' --save-dir $SAVEDIR --share-all-embeddings $warmup \
 --encoder-bert-dropout --encoder-bert-dropout-ratio $bedropout \
---bert-model-name bert-base-multilingual-cased | tee -a $SAVEDIR/training.log
+--bert-model-name bert-base-multilingual-uncased | tee -a $SAVEDIR/training.log
