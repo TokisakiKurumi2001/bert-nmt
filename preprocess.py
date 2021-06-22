@@ -187,7 +187,8 @@ def main(args):
     if target:
         make_all(args.target_lang, tgt_dict)
 
-    berttokenizer = AutoTokenizer.from_pretrained(args.bert_model_name)
+    berttokenizer = AutoTokenizer.from_pretrained(args.bert_model_name,use_fast=False)
+    print(" type :::: {}".format(type(berttokenizer)))
     make_all(args.source_lang, berttokenizer)
 
     print("| Wrote preprocessed data to {}".format(args.destdir))
