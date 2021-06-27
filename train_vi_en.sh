@@ -8,7 +8,7 @@ src=vi
 tgt=en
 bedropout=0.5
 ARCH=transformer_wmt_en_de
-DATAPATH=iwslt_en_vi
+DATAPATH=iwslt_vi_en
 SAVEDIR=checkpoints/iwed_${src}_${tgt}_${bedropout}
 mkdir -p $SAVEDIR
 if [ ! -f "$SAVEDIR/checkpoint_last.pt" ]
