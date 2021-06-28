@@ -5,10 +5,10 @@ nvidia-smi
 python3 -c "import torch; print(torch.__version__)"
 
 src=vi
-tgt=en
+tgt=ba
 bedropout=0.5
 ARCH=transformer_wmt_en_de
-DATAPATH=iwslt_vi_en
+DATAPATH=iwslt_vi_ba
 SAVEDIR=checkpoints/iwed_${src}_${tgt}_${bedropout}
 mkdir -p $SAVEDIR
 if [ ! -f "$SAVEDIR/checkpoint_last.pt" ]
